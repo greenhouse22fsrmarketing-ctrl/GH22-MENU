@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" class="h-full">
  <head>
@@ -285,7 +286,7 @@
     and I wish Greenhouse 22
     the prosperity it deserves :) -->
    <footer class="border-t border-green-300 mt-12 py-6 text-center text-green-600 text-sm">
-    <p>© 2026 Greenhouse 22 • Fishing Station &amp; Restaurant<br>Purok Sweet Rose, Brgy. Dumagoc, Pagadian City<br><a href="tel:+639777505800">0977-750-5800</a><br><a href="changelogs.txt">v0.0.1-hotfix3</a></p>
+    <p>© 2026 Greenhouse 22 • Fishing Station &amp; Restaurant<br>Purok Sweet Rose, Brgy. Dumagoc, Pagadian City<br><a href="tel:+639777505800">0977-750-5800</a><br><a href="changelogs.txt">v0.0.2-hotfix</a></p>
    </footer>
   </div>
   <script>
@@ -711,14 +712,12 @@
   currentCategory = key;
 
   if (isFirstCategory) {
-    // Entering menu for the first time
     history.pushState(
       { view: 'category' },
       '',
       '#menu'
     );
   } else {
-    // Switching categories — do NOT add history
     history.replaceState(
       { view: 'category' },
       '',
@@ -732,7 +731,11 @@
   renderSidebar();
   renderMenuItems();
 
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  // ✅ RESET ACTUAL SCROLL CONTAINER
+  const appScrollContainer = document.getElementById('app-container');
+  if (appScrollContainer) {
+    appScrollContainer.scrollTop = 0;
+  }
 }
 
     function selectOption(itemKey, choice, event) {
